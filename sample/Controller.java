@@ -49,7 +49,7 @@ public class Controller {
             String message = "das";
             int people_result=0;
             System.out.println(message);
-             ////
+
              try {
                  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("connection_form.fxml"));
                  Parent root1 = (Parent) fxmlLoader.load();
