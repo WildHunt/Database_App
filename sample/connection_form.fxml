@@ -4,13 +4,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.connectController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -53,17 +54,17 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <TextField layoutX="84.0" layoutY="117.0" />
-            <TextField layoutX="84.0" layoutY="186.0" />
-            <TextField layoutX="299.0" layoutY="117.0" prefHeight="27.0" prefWidth="62.0" />
-            <TextField layoutX="137.0" layoutY="263.0" />
+            <TextField fx:id="data_adress" layoutX="84.0" layoutY="117.0" text="153.19.7.13" />
+            <TextField fx:id="data_name" layoutX="84.0" layoutY="186.0" text="rmakeyeu" />
+            <TextField fx:id="data_port" layoutX="299.0" layoutY="117.0" prefHeight="27.0" prefWidth="62.0" text="1401" />
+            <TextField fx:id="data_user_name" layoutX="137.0" layoutY="263.0" text="rmakeyeu" />
             <Text layoutX="84.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database adress:" />
             <Text layoutX="90.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database:" />
             <Text layoutX="299.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" />
-            <TextField layoutX="361.0" layoutY="263.0" />
             <Text layoutX="137.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name:" />
             <Text layoutX="361.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-            <Button layoutX="477.0" layoutY="104.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="107.0" text="Connect me" />
+            <Button fx:id="but_connect" layoutX="477.0" layoutY="104.0" mnemonicParsing="false" onAction="#goConnect" prefHeight="62.0" prefWidth="107.0" text="Connect me" />
+            <PasswordField fx:id="data_user_pass" layoutX="361.0" layoutY="263.0" />
          </children>
     </AnchorPane>
   </children>
