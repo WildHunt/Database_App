@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main_page.fxml"));
         primaryStage.setTitle("Roma Makeev");
-        primaryStage.setScene(new Scene(root, 600, 375));
+        primaryStage.setScene(new Scene(root, 640, 400));
         primaryStage.show();
 
         ////
@@ -32,6 +32,7 @@ public class Main extends Application {
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.show();
+
         } catch(Exception e) {
             e.printStackTrace();
         }
