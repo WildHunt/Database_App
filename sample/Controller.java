@@ -28,10 +28,17 @@ import java.util.concurrent.Executors;
 
 public class Controller {
     //public EmployeeDAO emp1;
+    @FXML
+    private TextField aName;
 
+    @FXML
+    private TextField aSurname;
 
+    @FXML
+    private TextField aSpec;
 
-
+    @FXML
+    private TextField aEmail;
     @FXML
     private Menu menu_item;
 
@@ -39,7 +46,14 @@ public class Controller {
     private MenuItem new_conn;
 
     @FXML
+    private AnchorPane anchor_adding;
+
+    @FXML
+    private Button finishBut;
+
+    @FXML
     public AnchorPane anchor_main;
+
 
     @FXML
     private TextField empIdText;
@@ -104,6 +118,7 @@ public class Controller {
 
     @FXML
     void initialize(ActionEvent event) {
+        anchor_adding.setVisible(false);
     }
 
 
@@ -201,6 +216,13 @@ public class Controller {
         }
     }
 
+    @FXML
+    void switchAnchor(ActionEvent event) {
+        anchor_main.setVisible(false);
+        anchor_adding.setVisible(true);
+
+    }
+
 
     @FXML
     void insertEmployee(ActionEvent event) {
@@ -223,6 +245,11 @@ public class Controller {
     @FXML
     void updateEmployeeEmail(ActionEvent event) {
 
+    }
+    @FXML
+    void switchBack(ActionEvent event) {
+    anchor_adding.setVisible(false);
+    anchor_main.setVisible(true);
     }
 
 

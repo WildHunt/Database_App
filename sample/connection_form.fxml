@@ -7,10 +7,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.connectController">
@@ -56,19 +58,26 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <TextField fx:id="data_adress" layoutX="84.0" layoutY="117.0" text="153.19.7.13" />
-            <TextField fx:id="data_name" layoutX="84.0" layoutY="186.0" text="rmakeyeu" />
-            <TextField fx:id="data_port" layoutX="299.0" layoutY="117.0" prefHeight="27.0" prefWidth="62.0" text="1401" />
-            <TextField fx:id="data_user_name" layoutX="137.0" layoutY="263.0" text="rmakeyeu" />
-            <Text layoutX="84.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database adress:" />
-            <Text layoutX="90.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database:" />
-            <Text layoutX="299.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" />
-            <Text layoutX="137.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name:" />
-            <Text layoutX="361.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-            <Button fx:id="but_connect" layoutX="477.0" layoutY="104.0" mnemonicParsing="false" onAction="#goConnect" prefHeight="62.0" prefWidth="107.0" text="Connect me" />
-            <PasswordField fx:id="data_user_pass" layoutX="361.0" layoutY="263.0" />
+            <TextField fx:id="data_adress" layoutX="20.0" layoutY="57.0" text="153.19.7.13" />
+            <TextField fx:id="data_name" layoutX="20.0" layoutY="122.0" text="rmakeyeu" />
+            <TextField fx:id="data_port" layoutX="211.0" layoutY="57.0" prefHeight="27.0" prefWidth="62.0" text="1401" />
+            <TextField fx:id="data_user_name" layoutX="345.0" layoutY="57.0" text="rmakeyeu" />
+            <Text layoutX="20.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database adress:" />
+            <Text layoutX="20.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database:" />
+            <Text layoutX="213.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Port:" />
+            <Text layoutX="342.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name:" />
+            <Text layoutX="345.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+            <Button fx:id="but_connect" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#goConnect" prefHeight="41.0" prefWidth="157.0" text="Connect me" />
+            <PasswordField fx:id="data_user_pass" layoutX="345.0" layoutY="122.0" />
             <Label fx:id="output" layoutX="445.0" layoutY="40.0" />
-            <ProgressBar fx:id="progressBar" layoutX="228.0" layoutY="311.0" prefWidth="200.0" progress="0.1" />
+            <ProgressBar fx:id="progressBar" layoutX="252.0" layoutY="197.0" prefHeight="20.0" prefWidth="305.0" visible="false" />
+            <Separator layoutX="14.0" layoutY="172.0" prefHeight="4.0" prefWidth="610.0" />
+            <Separator layoutX="14.0" layoutY="244.0" prefHeight="4.0" prefWidth="610.0" />
+            <Label fx:id="isConLabel" layoutX="167.0" layoutY="278.0" prefHeight="17.0" prefWidth="305.0" textAlignment="CENTER" textFill="#38c329">
+               <font>
+                  <Font name="System Italic" size="33.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>

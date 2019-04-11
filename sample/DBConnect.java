@@ -27,6 +27,7 @@ public class DBConnect extends connectController {
       //  connection(url,databaseUserName,databasePassword);
     }
 
+
     public static Connection connection() throws SQLException{
         url="jdbc:sqlserver://"+serverip+"\\SQLEXPRESS:"+serverport+";databaseName="+dbName+"";
         try {

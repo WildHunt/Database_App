@@ -45,6 +45,8 @@ import java.sql.Statement;
             @FXML
             public ProgressBar progressBar;
 
+            @FXML
+            private Label isConLabel;
 
             @FXML
             private Button but_connect;
@@ -76,29 +78,28 @@ import java.sql.Statement;
 
             @FXML
             void goConnect(ActionEvent event) throws SQLException {
-                System.out.println("Hi");
-                progressBar.setProgress(1);
+               isConLabel.setText("");
+
                 /**
                  *
                  */
+                progressBar.setVisible(true);
                 DBConnect.dbName= data_name.getText();
-
                 DBConnect.serverip = data_adress.getText();
                 DBConnect.serverport = data_port.getText();
                 DBConnect.databasePassword= data_user_pass.getText();
                 DBConnect.databaseUserName= data_user_name.getText();
-                DBConnect.connection();
-               // DBConnect.url = "jdbc:sqlserver://" + serverip + "\\SQLEXPRESS:" + serverport + ";databaseName=" + dbName + "";
 
+                if (DBConnect.connection().isValid(5)){
+                    progressBar.setVisible(false);
+                    isConLabel.setText("Succsesfull");
+                }
+//                if (!DBConnect.connection().isValid(0))   {
+//                    isConLabel.setText("Failed");
+//                    progressBar.setVisible(false);
+//                }
 
-              //  String databaseUserName = data_user_name.getText();
-//                String databasePassword = data_user_pass.getText();
-              //  String databasePassword = "253947";
-                //  connectionme(url, databaseUserName, databasePassword);
-               // Database classcon = new Database(dbName, databaseUserName, serverip, serverport, databasePassword);
-               // classcon.connection(url, databaseUserName, databasePassword);
-                // Database.connection(url,databaseUserName,databasePassword);
-
+                    DBConnect.connection();
 
 
             }
