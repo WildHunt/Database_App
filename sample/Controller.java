@@ -86,25 +86,46 @@ public class Controller {
     private TextField emailText;
 
     @FXML
-    public TableView employeeTable;
+    public TableView doctorsTable;
 
     @FXML
-    private TableColumn<Employee, Integer> empIdColumn;
+    private TableColumn<Doctors, Integer> dctIdColumn;
 
     @FXML
-    private TableColumn<Employee, String> empNameColumn;
+    private TableColumn<Doctors, String> dctNameColumn;
 
     @FXML
-    private TableColumn<Employee, String> empLastNameColumn;
+    private TableColumn<Doctors, String> dctSurnameColumn;
 
     @FXML
-    private TableColumn<Employee, String> empEmailColumn;
+    private TableColumn<Doctors, String> dctEmailColumn;
 
     @FXML
-    private TableColumn<Employee, String> empPhoneNumberColumn;
+    private TableColumn<Doctors, String> dctSpecColumn;
 
     @FXML
-    private TableColumn<Employee, String> empHireDateColumn;
+    private TableColumn<Doctors, String> dctCityColumn;
+
+    @FXML
+    private TableColumn<Doctors, String> dctSocialColumn;
+
+    @FXML
+    private TableColumn<Doctors, Boolean> dctCarColumn;
+
+    @FXML
+    private TableColumn<Doctors, Boolean> dctResidentColumn;
+
+    @FXML
+    private ComboBox<String> specBox;
+
+    @FXML
+    private TextField nameBox;
+
+    @FXML
+    private TextField emailBox;
+
+    @FXML
+    private TextField surnameBox;
 
     @FXML
     private Button searchEmpsBtn;
@@ -157,6 +178,8 @@ public class Controller {
 
     @FXML
     private void initialize () {
+
+        specBox.getItems().addAll("Dentist", "Surgeon", "Nurse","Mediс");
         /*
         The setCellValueFactory(...) that we set on the table columns are used to determine
         which field inside the Employee objects should be used for the particular column.
@@ -175,11 +198,20 @@ public class Controller {
             return t;
         });
 
-        empIdColumn.setCellValueFactory(cellData -> cellData.getValue().employeeIdProperty().asObject());
-        empNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
-        empLastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        empEmailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
-        empPhoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
+        dctIdColumn.setCellValueFactory(cellData -> cellData.getValue().id_doctorProperty().asObject());
+        dctNameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        dctSurnameColumn.setCellValueFactory(cellData -> cellData.getValue().surnameProperty());
+        dctEmailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        dctSpecColumn.setCellValueFactory(cellData -> cellData.getValue().specProperty());
+        dctCityColumn.setCellValueFactory(cellData -> cellData.getValue().cityProperty());
+        dctCarColumn.setCellValueFactory(cellData -> cellData.getValue().carProperty());
+        dctResidentColumn.setCellValueFactory(cellData -> cellData.getValue().residentProperty());
+
+//        empIdColumn.setCellValueFactory(cellData -> cellData.getValue().employeeIdProperty().asObject());
+//        empNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+//        empLastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+//        empEmailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+//        empPhoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
        // empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().hireDateProperty());
     }
 
@@ -206,10 +238,11 @@ public class Controller {
 
             //Get all Employees information
             //ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
-            ObservableList<Employee> empData = new EmployeeDAO().searchEmployees();
+            ObservableList<Doctors> dctData = new DoctorsDAO().searchEmployees();
+           // ObservableList<Employee> empData = new EmployeeDAO().searchEmployees();
             //Populate Employees on TableView
-            populateEmployees(empData);
-            employeeTable.setItems(empData);
+            populateEmployees(dctData);
+            doctorsTable.setItems(dctData);
         } catch (SQLException e){
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
@@ -238,7 +271,7 @@ public class Controller {
     public void populateEmployees (ObservableList<?> empData) throws ClassNotFoundException {
         //Set items to the employeeTable
         System.out.println(empData.toString());
-        employeeTable.setItems(empData);
+        doctorsTable.setItems(empData);
 
     }
 
