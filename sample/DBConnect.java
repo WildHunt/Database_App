@@ -41,7 +41,7 @@ public class DBConnect extends connectController {
         return conn;
     }
 
-    public  ResultSet dbExecuteQuery(String queryStmt) throws SQLException, ClassNotFoundException {
+    public static ResultSet dbExecuteQuery(String queryStmt) throws SQLException, ClassNotFoundException {
         //Declare statement, resultSet and CachedResultSet as null
         Statement stmt = null;
         ResultSet resultSet = null;

@@ -27,9 +27,24 @@ import java.util.concurrent.Executors;
 
 
 public class Controller {
-    //public EmployeeDAO emp1;
+
+    @FXML
+    private CheckBox carRadio;
+
+    @FXML
+    private CheckBox residentRadio;
+
+    @FXML
+    private Button addEmpBtn;
+
     @FXML
     private TextField aName;
+
+    @FXML
+    private TextField cityBox;
+
+    @FXML
+    private TextField socialBox;
 
     @FXML
     private TextField aSurname;
@@ -66,9 +81,6 @@ public class Controller {
 
     @FXML
     private Button updateEmpBtn;
-
-    @FXML
-    private Button addEmpBtn;
 
     @FXML
     private TextArea resultArea;
@@ -283,6 +295,26 @@ public class Controller {
     void switchBack(ActionEvent event) {
     anchor_adding.setVisible(false);
     anchor_main.setVisible(true);
+    }
+
+    @FXML
+    void addDoctor(ActionEvent event) throws ClassNotFoundException, SQLException{
+        try {
+            System.out.println(nameBox.getText());
+            System.out.println(specBox.getValue());
+            System.out.println(cityBox.getText());
+            System.out.println(socialBox.getText());
+            DoctorsDAO.insertDoctors(nameBox.getText(),surnameBox.getText(),emailBox.getText(),
+                    specBox.getValue(),
+                    cityBox.getText(),
+                    socialBox.getText(),
+                    carRadio.isSelected(),
+                    residentRadio.isSelected());
+
+        } catch (SQLException e){
+            System.out.println("Error occurred while getting employees information from DB.\n" + e);
+            throw e;
+        }
     }
 
 

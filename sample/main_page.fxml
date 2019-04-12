@@ -60,9 +60,9 @@
     </MenuBar>
       <AnchorPane prefHeight="618.0" prefWidth="989.0">
          <children>
-            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0">
+            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0" visible="false">
                <children>
-                  <TextField fx:id="empIdText" layoutX="193.0" layoutY="41.0" prefHeight="27.0" prefWidth="85.0" promptText="ID" />
+                  <TextField fx:id="empIdText" layoutX="193.0" layoutY="41.0" prefHeight="27.0" prefWidth="85.0" promptText="ID" visible="false" />
                   <Label layoutX="194.0" layoutY="21.0" text="Doctor ID" />
                   <Button fx:id="addEmpBtn" layoutX="7.0" layoutY="120.0" mnemonicParsing="false" onAction="#insertEmployee" prefHeight="27.0" prefWidth="167.0" text="Add Employee" />
                   <TextArea fx:id="resultArea" layoutX="11.0" layoutY="428.0" prefHeight="85.0" prefWidth="167.0" wrapText="true" />
@@ -106,7 +106,7 @@
                   <Button fx:id="deleteEmpBtn" layoutX="580.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="27.0" prefWidth="85.0" text="Delete" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0" visible="false">
+            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0">
                <children>
                   <Button fx:id="finishBut" layoutX="808.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchBack" prefHeight="75.0" prefWidth="153.0" text="Finish">
                      <font>
@@ -122,12 +122,12 @@
                   <TextField fx:id="surnameBox" layoutX="114.0" layoutY="153.0" />
                   <TextField layoutX="112.0" layoutY="296.0" />
                   <Label layoutX="112.0" layoutY="268.0" text="Phone:" />
-                  <TextField fx:id="surnameBox1" layoutX="112.0" layoutY="363.0" />
+                  <TextField fx:id="cityBox" layoutX="112.0" layoutY="363.0" />
                   <Label layoutX="112.0" layoutY="341.0" text="City:" />
                   <Label layoutX="329.0" layoutY="268.0" text="Social Media link:" />
-                  <CheckBox layoutX="335.0" layoutY="368.0" mnemonicParsing="false" text="Car" />
-                  <CheckBox layoutX="401.0" layoutY="368.0" mnemonicParsing="false" text="EU resident" />
-                  <TextField layoutX="329.0" layoutY="296.0" />
+                  <CheckBox fx:id="carRadio" layoutX="335.0" layoutY="368.0" mnemonicParsing="false" text="Car" />
+                  <CheckBox fx:id="residentRadio" layoutX="401.0" layoutY="368.0" mnemonicParsing="false" text="EU resident" />
+                  <TextField fx:id="socialBox" layoutX="329.0" layoutY="296.0" />
                   <Separator layoutX="14.0" layoutY="209.0" prefHeight="1.0" prefWidth="557.0" />
                   <Label layoutX="246.0" layoutY="223.0" text="Nonrequired:" textFill="#58bf30">
                      <font>
@@ -141,6 +141,7 @@
                   </Label>
                   <Separator layoutX="579.0" layoutY="10.0" orientation="VERTICAL" prefHeight="419.0" prefWidth="7.0" />
                   <Separator layoutX="14.0" layoutY="423.0" prefHeight="3.0" prefWidth="557.0" />
+                  <Button fx:id="addBut" layoutX="424.0" layoutY="441.0" mnemonicParsing="false" onAction="#addDoctor" prefHeight="37.0" prefWidth="153.0" text="Add" />
                </children>
             </AnchorPane>
          </children>

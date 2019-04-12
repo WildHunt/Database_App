@@ -92,28 +92,20 @@ public class DoctorsDAO {
 
     //INSERT an employee
     //*************************************
-    public  void insertDoctors (String name, String lastname, String email, String spec, String city,
+    public static void insertDoctors (String name, String lastname, String email, String spec, String city,
                                       String social, Boolean car, Boolean resident) throws SQLException, ClassNotFoundException {
         //Declare a DELETE statement
-        String updateStmt =
+        String insertStmt =
                 "BEGIN\n" +
                         "INSERT INTO Doctors\n" +
-                        "(id_doctor, name, surname, email, spec, city, social,car,resident)\n" +
+                        "(name, surname, email, spec, city, social,car,resident)\n" +
                         "VALUES\n" +
-                        "(sequence_employee.nextval, '"+name+"', '"+lastname+"','"+email+"', '"+spec+"','"+city+"', " +
-                        "'"+social+"', '"+car+"', '"+resident+"',);\n" +
+                        "('"+name+"', '"+lastname+"','"+email+"', '"+spec+"','"+city+"', " +
+                        "'"+social+"', '"+car+"', '"+resident+"');\n" +
                         "END;";
 
-        //Execute DELETE operation
-        Connection conn = DBConnect.connection();
-        preparedStatement = conn.prepareStatement(updateStmt);
-
         try {
-           // connectController.dbExecuteUpdate(updateStmt);
-            ResultSet rsEmps;
-            rsEmps = preparedStatement.executeQuery();
-
-           int i=0;
+            DBConnect.dbExecuteQuery(insertStmt);
         } catch (SQLException e) {
             System.out.print("Error occurred while Insert Operation: " + e);
             throw e;
