@@ -1,32 +1,55 @@
-package sample;
+package sample.Controllers;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
-import javafx.concurrent.Task;
 import javafx.scene.control.Menu;
 import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.StageStyle;
+import sample.Doctors;
+import sample.DoctorsDAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 
 public class Controller {
+
+    @FXML
+    private MenuItem logoutbut;
+
+    @FXML
+    private AnchorPane lab;
+
+    @FXML
+    private Label nameError;
+
+    @FXML
+    private Label emailError;
+
+    @FXML
+    private Label surnameError;
+
+    @FXML
+    private Label specError;
+
+    @FXML
+    private Label phoneError;
+
+    @FXML
+    private Label socialError;
+
+    @FXML
+    private Label cityError;
 
     @FXML
     private CheckBox carRadio;
@@ -59,6 +82,9 @@ public class Controller {
 
     @FXML
     private MenuItem new_conn;
+
+    @FXML
+    private MenuItem logout;
 
     @FXML
     private AnchorPane anchor_adding;
@@ -142,6 +168,15 @@ public class Controller {
     @FXML
     private Button searchEmpsBtn;
     private Executor exec;
+
+    @FXML
+    private Button checkBut;
+
+    @FXML
+    private TextField phoneBox;
+
+    @FXML
+    private Label checkLab;
 
     @FXML
     void deleteEmployee(ActionEvent event) {
@@ -230,8 +265,10 @@ public class Controller {
     @FXML
     void connect(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("connection_form.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/connection_form.fxml"));
+//
+           // FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/connection_form.fxml"));
+            Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
             stage.setTitle("Roma Makeev");
@@ -316,6 +353,69 @@ public class Controller {
             throw e;
         }
     }
+
+    @FXML
+    void checkBut(ActionEvent event) {
+        specError.setText("");
+        surnameError.setText("");
+        nameError.setText("");
+        checkLab.setText("");
+        String phone;
+        phone = phoneBox.getText();
+
+       // if(phone == null || phone.length() < 5 || phone.matches("-?\\d+(\\.\\d+)?"))
+        if (phone.matches("-?\\d+(\\.\\d+)?"))
+            checkLab.setText("Valid");
+
+        else
+            checkLab.setText("Not valid");
+
+        if (nameBox.getText().matches("^\\D*$")== false){
+            nameError.setText("Error");
+        }
+        if (surnameBox.getText().matches("^\\D*$")== false){
+            surnameError.setText("Error");
+        }
+        if (specBox.getValue()==null){
+            specError.setText("Error");
+        }
+
+    }
+
+    @FXML
+    void logout(ActionEvent event) {
+
+        try {
+
+            Stage stage1 = (Stage) checkBut.getScene().getWindow();
+            // do what you have to do
+            stage1.close();
+
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../fxml/regform.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../fxml/regform.fxml"));
+
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+           // stage.initStyle(StageStyle.TRANSPARENT);
+            //primaryStage.setAlwaysOnTop(true);
+            root.setStyle("-fx-background-color: transparent;");
+          //  stage.setTitle("Roma Makeev");
+            stage.setScene(new Scene(root, 1200, 750, Color.TRANSPARENT));
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.show();
+
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+    }
+
 
 
 }

@@ -3,7 +3,7 @@
 //import javafx.collections.ObservableList;
 ////import sample.util.DBUtil;
 //import javafx.fxml.FXML;
-//import sample.connectController;
+//import sample.Controllers.connectController;
 //
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;

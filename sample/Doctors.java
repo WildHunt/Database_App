@@ -17,7 +17,7 @@ public class Doctors {
     private BooleanProperty resident;
 
     public Doctors() {
-        this.id_doctor = new SimpleIntegerProperty();;
+        this.id_doctor = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
         this.surname = new SimpleStringProperty();
         this.email = new SimpleStringProperty();

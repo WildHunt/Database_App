@@ -13,11 +13,13 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<VBox prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -27,7 +29,7 @@
             <MenuItem mnemonicParsing="false" text="Open…" />
             <Menu mnemonicParsing="false" text="Open Recent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem fx:id="logoutbut" mnemonicParsing="false" onAction="#logout" text="Log out" />
             <MenuItem mnemonicParsing="false" text="Save" />
             <MenuItem mnemonicParsing="false" text="Save As…" />
             <MenuItem mnemonicParsing="false" text="Revert" />
@@ -120,7 +122,7 @@
                   <TextField fx:id="nameBox" layoutX="114.0" layoutY="83.0" />
                   <TextField fx:id="emailBox" layoutX="329.0" layoutY="83.0" />
                   <TextField fx:id="surnameBox" layoutX="114.0" layoutY="153.0" />
-                  <TextField layoutX="112.0" layoutY="296.0" />
+                  <TextField fx:id="phoneBox" layoutX="112.0" layoutY="296.0" />
                   <Label layoutX="112.0" layoutY="268.0" text="Phone:" />
                   <TextField fx:id="cityBox" layoutX="112.0" layoutY="363.0" />
                   <Label layoutX="112.0" layoutY="341.0" text="City:" />
@@ -142,6 +144,67 @@
                   <Separator layoutX="579.0" layoutY="10.0" orientation="VERTICAL" prefHeight="419.0" prefWidth="7.0" />
                   <Separator layoutX="14.0" layoutY="423.0" prefHeight="3.0" prefWidth="557.0" />
                   <Button fx:id="addBut" layoutX="424.0" layoutY="441.0" mnemonicParsing="false" onAction="#addDoctor" prefHeight="37.0" prefWidth="153.0" text="Add" />
+                  <Button fx:id="checkBut" layoutX="225.0" layoutY="441.0" mnemonicParsing="false" onAction="#checkBut" prefHeight="37.0" prefWidth="153.0" text="Check" />
+                  <Label fx:id="checkLab" layoutX="229.0" layoutY="501.0" prefHeight="17.0" prefWidth="289.0" textFill="#65d339">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameError" layoutX="244.0" layoutY="116.0" prefHeight="15.0" prefWidth="36.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="emailError" layoutX="453.0" layoutY="116.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="surnameError" layoutX="229.0" layoutY="187.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="specError" layoutX="457.0" layoutY="186.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phoneError" layoutX="239.0" layoutY="334.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="socialError" layoutX="460.0" layoutY="334.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cityError" layoutX="240.0" layoutY="401.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="157.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="367.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="173.0" layoutY="127.0">
+                     <image>
+                        <Image url="@../star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="418.0" layoutY="126.0">
+                     <image>
+                        <Image url="@../star-red-512.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>

@@ -1,10 +1,8 @@
 package sample;
-import javafx.beans.property.BooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Controllers.DBConnect;
 //import sample.util.DBUtil;
-import javafx.fxml.FXML;
-import sample.connectController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

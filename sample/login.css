@@ -1,0 +1,24 @@
+.button7 {
+    -fx-background-color: rgb(64,199,129);
+   // -fx-box-shadow: 0 -3px rgb(53,167,110) inset;
+    //-fx-fill: white;
+   // -fx-font-style:italic;
+    //-fx-font-family: "DejaVu Sans Mono";
+    -fx-border-radius:5px;
+   // -fx-box-shadow: 0 -3px rgb(53,167,110) inset;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+.button7:hover { -fx-background-color:rgb(53, 167, 110); }
+
+.password-field{
+    -fx-highlight-fill:black;
+}
+.jfx-text-field, .jfx-password-field {
+    -fx-prompt-text-fill: WHITE;
+    -jfx-focus-color: WHITE;
+    -jfx-unfocus-color: WHITE;
+    -fx-fill: WHITE;
+    -fx-font: white;
+    -jfx-fill:white;
+    -fx-text-inner-color: red"
+}
