@@ -28,6 +28,9 @@ public class Controller {
     private MenuItem logoutbut;
 
     @FXML
+    private TextArea consolefield;
+
+    @FXML
     private AnchorPane lab;
 
     @FXML
@@ -260,6 +263,11 @@ public class Controller {
 //        empEmailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
 //        empPhoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
        // empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().hireDateProperty());
+        consolefield.setText("Database is not connected");
+        consolefield.setText("\n"+ consolefield.getText()+ "roma");
+
+
+
     }
 
     @FXML

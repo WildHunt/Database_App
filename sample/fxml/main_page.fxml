@@ -6,9 +6,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -44,12 +47,11 @@
             <MenuItem mnemonicParsing="false" onAction="#switchAnchor" text="Add Doctor" />
             <MenuItem mnemonicParsing="false" text="Redo" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Admin Panel" />
             <MenuItem mnemonicParsing="false" text="Paste" />
             <MenuItem mnemonicParsing="false" text="Delete" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Preferences" />
             <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
@@ -60,35 +62,14 @@
         </Menu>
       </menus>
     </MenuBar>
-      <AnchorPane prefHeight="618.0" prefWidth="989.0">
+      <AnchorPane prefHeight="618.0" prefWidth="989.0" styleClass="anchor" stylesheets="@../Source/css/csslog.css">
          <children>
-            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0" visible="false">
+            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0">
                <children>
                   <TextField fx:id="empIdText" layoutX="193.0" layoutY="41.0" prefHeight="27.0" prefWidth="85.0" promptText="ID" visible="false" />
-                  <Label layoutX="194.0" layoutY="21.0" text="Doctor ID" />
-                  <Button fx:id="addEmpBtn" layoutX="7.0" layoutY="120.0" mnemonicParsing="false" onAction="#insertEmployee" prefHeight="27.0" prefWidth="167.0" text="Add Employee" />
-                  <TextArea fx:id="resultArea" layoutX="11.0" layoutY="428.0" prefHeight="85.0" prefWidth="167.0" wrapText="true" />
-                  <Label layoutX="9.0" layoutY="231.0" text="Result Console">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="97.0" layoutY="24.0" spacing="4.0">
-                     <children>
-                        <TextField fx:id="nameText" prefHeight="25.0" prefWidth="79.0" promptText="Name" />
-                        <TextField fx:id="surnameText" prefHeight="25.0" prefWidth="79.0" promptText="Surname" />
-                        <TextField fx:id="emailText" prefHeight="25.0" prefWidth="79.0" promptText="email" />
-                     </children>
-                  </VBox>
-                  <VBox layoutX="9.0" layoutY="28.0" prefWidth="67.0" spacing="12.0">
-                     <children>
-                        <Label text="Name" />
-                        <Label text="Surname" />
-                        <Label text="Email" />
-                     </children>
-                  </VBox>
-                  <Separator layoutX="180.0" layoutY="14.0" orientation="VERTICAL" prefHeight="333.0" prefWidth="7.0" />
-                  <TableView fx:id="doctorsTable" editable="true" layoutX="193.0" layoutY="102.0" prefHeight="447.0" prefWidth="773.0" tableMenuButtonVisible="true">
+                  <TextArea fx:id="resultArea" layoutX="321.0" layoutY="523.0" prefHeight="85.0" prefWidth="167.0" wrapText="true" />
+                  <VBox layoutX="97.0" layoutY="24.0" spacing="4.0" />
+                  <TableView fx:id="doctorsTable" editable="true" layoutX="305.0" layoutY="102.0" prefHeight="412.0" prefWidth="661.0" tableMenuButtonVisible="true">
                      <columns>
                         <TableColumn fx:id="dctIdColumn" prefWidth="57.0" text="Id" />
                         <TableColumn fx:id="dctNameColumn" prefWidth="75.0" text="Name" />
@@ -101,14 +82,67 @@
                         <TableColumn fx:id="dctResidentColumn" prefWidth="75.0" text="Column X" />
                      </columns>
                   </TableView>
-                  <Button fx:id="searchEmpBtn" layoutX="469.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchEmployee" prefHeight="27.0" prefWidth="85.0" text="Search" />
-                  <Label layoutX="317.0" layoutY="21.0" text="Specialization:" />
-                  <TextField fx:id="newEmailText" layoutX="317.0" layoutY="41.0" prefHeight="25.0" prefWidth="120.0" promptText="Specialization" />
+                  <Button fx:id="searchEmpBtn" layoutX="452.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchEmployee" prefHeight="27.0" prefWidth="85.0" text="Search" />
+                  <Label layoutX="326.0" layoutY="16.0" text="Specialization:" />
+                  <TextField fx:id="newEmailText" layoutX="323.0" layoutY="41.0" prefHeight="25.0" prefWidth="120.0" promptText="Specialization" />
                   <Button fx:id="searchEmpsBtn" layoutX="678.0" layoutY="36.0" mnemonicParsing="false" onAction="#searchEmployees" prefHeight="37.0" prefWidth="167.0" text="Show all" />
-                  <Button fx:id="deleteEmpBtn" layoutX="580.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="27.0" prefWidth="85.0" text="Delete" />
+                  <Button fx:id="deleteEmpBtn" layoutX="559.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="27.0" prefWidth="85.0" text="Delete" />
+                  <TextArea fx:id="consolefield" editable="false" layoutX="604.0" layoutY="523.0" prefHeight="63.0" prefWidth="362.0" wrapText="true" />
+                  <TabPane layoutX="14.0" layoutY="13.0" prefHeight="573.0" prefWidth="270.0" style="-fx-border-color: black;" styleClass="tab-header-area" stylesheets="@../Source/css/csslog.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Search">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="236.0">
+                                 <children>
+                                    <TextField layoutX="29.0" layoutY="100.0" />
+                                    <MenuButton layoutX="29.0" layoutY="55.0" mnemonicParsing="false" text="Search by">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                    </MenuButton>
+                                    <Button layoutX="29.0" layoutY="143.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Search" />
+                                    <Button layoutX="29.0" layoutY="289.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="81.0" text="Delete" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Untitled Tab 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="addEmpBtn" layoutX="52.0" layoutY="160.0" mnemonicParsing="false" onAction="#insertEmployee" prefHeight="27.0" prefWidth="167.0" text="Add Employee" />
+                                    <TextField fx:id="nameText" layoutX="120.0" layoutY="54.0" prefHeight="25.0" prefWidth="79.0" promptText="Name" />
+                                    <TextField fx:id="surnameText" layoutX="120.0" layoutY="85.0" prefHeight="25.0" prefWidth="79.0" promptText="Surname" />
+                                    <TextField fx:id="emailText" layoutX="120.0" layoutY="116.0" prefHeight="25.0" prefWidth="79.0" promptText="email" />
+                                    <VBox layoutX="43.0" layoutY="67.0" prefWidth="67.0" spacing="12.0">
+                                       <children>
+                                          <Label text="Name" />
+                                          <Label text="Surname" />
+                                          <Label text="Email" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Procedure">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="288.0">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Show salary" />
+                                    <Button layoutX="14.0" layoutY="112.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="With car" />
+                                    <Button layoutX="142.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Non EU" />
+                                    <Button layoutX="142.0" layoutY="112.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Admins" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0">
+            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0" visible="false">
                <children>
                   <Button fx:id="finishBut" layoutX="808.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchBack" prefHeight="75.0" prefWidth="153.0" text="Finish">
                      <font>

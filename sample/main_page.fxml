@@ -60,7 +60,7 @@
         </Menu>
       </menus>
     </MenuBar>
-      <AnchorPane prefHeight="618.0" prefWidth="989.0">
+      <AnchorPane id="canvas" prefHeight="618.0" prefWidth="989.0" style="-fx-background-image: url('mac.png') url('mac.png');">
          <children>
             <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0" visible="false">
                <children>
@@ -108,7 +108,7 @@
                   <Button fx:id="deleteEmpBtn" layoutX="580.0" layoutY="41.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="27.0" prefWidth="85.0" text="Delete" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0" style="-fx-background-image: macnew.pngmacnew.png;">
+            <AnchorPane fx:id="anchor_adding" prefHeight="618.0" prefWidth="1000.0">
                <children>
                   <Button fx:id="finishBut" layoutX="808.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchBack" prefHeight="75.0" prefWidth="153.0" text="Finish">
                      <font>

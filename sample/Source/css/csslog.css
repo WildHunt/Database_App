@@ -3,7 +3,7 @@
      -jfx-focus-color: WHITE;
      -jfx-unfocus-color: WHITE;
      -fx-fill: WHITE;
-     -fx-font: white;
+    // -fx-font: white;
      -jfx-fill:white;
      -fx-text-inner-color: white;
  }
@@ -13,7 +13,14 @@
     -jfx-focus-color: WHITE;
     -jfx-unfocus-color: WHITE;
     -fx-fill: WHITE;
-    -fx-font: white;
+    //-fx-font: white;
     -jfx-fill:white;
     -fx-text-inner-color: white;
+}
+.anchor {
+  //-fx-background-image: url('../fs_dbl_texture_attachment.png');
+}
+.tab-header-area{
+   // -fx-background-color: white;
+   // -fx-border-color: 2px black;
 }
