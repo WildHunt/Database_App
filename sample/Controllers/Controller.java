@@ -28,6 +28,10 @@ public class Controller {
     private MenuItem logoutbut;
 
     @FXML
+    private Button procCar;
+
+
+    @FXML
     private TextArea consolefield;
 
     @FXML
@@ -98,6 +102,12 @@ public class Controller {
     @FXML
     public AnchorPane anchor_main;
 
+    @FXML
+    public AnchorPane adminPanel;
+
+    @FXML
+    private MenuItem menuAdmin;
+
 
     @FXML
     private TextField empIdText;
@@ -107,6 +117,9 @@ public class Controller {
 
     @FXML
     private Button deleteEmpBtn;
+
+    @FXML
+    private Button finishBut1;
 
     @FXML
     private Button updateEmpBtn;
@@ -155,6 +168,22 @@ public class Controller {
 
     @FXML
     private TableColumn<Doctors, Boolean> dctResidentColumn;
+
+    ///////////////////////////
+    @FXML
+    public TableView adminsTable;
+
+    @FXML
+    private TableColumn<Doctors, Integer> idAdmin;
+
+    @FXML
+    private TableColumn<Doctors, String> userAdmin;
+
+    @FXML
+    private TableColumn<Doctors, String> roolsAdmin;
+
+    @FXML
+    private TableColumn<Doctors, String> activityAdmin;
 
     @FXML
     private ComboBox<String> specBox;
@@ -308,8 +337,19 @@ public class Controller {
 
     @FXML
     void switchAnchor(ActionEvent event) {
+        //from add doctor to main
         anchor_main.setVisible(false);
         anchor_adding.setVisible(true);
+
+    }
+
+    @FXML
+    void switchAdmins(ActionEvent event) {
+        //from add doctor to main
+        adminPanel.setVisible(false);
+        anchor_main.setVisible(true);
+        anchor_adding.setVisible(false);
+       // anchor_adding.setVisible(true);
 
     }
 
@@ -421,9 +461,32 @@ public class Controller {
 
 
 
-
     }
 
+    @FXML
+    void showCar(ActionEvent event) throws SQLException, ClassNotFoundException {
+        try {
+
+            //Get all Employees information
+            //ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
+            ObservableList<Doctors> dctData = new DoctorsDAO().showWithCar();
+            // ObservableList<Employee> empData = new EmployeeDAO().searchEmployees();
+            //Populate Employees on TableView
+            populateEmployees(dctData);
+            doctorsTable.setItems(dctData);
+        } catch (SQLException e){
+            System.out.println("Error occurred while getting employees information from DB.\n" + e);
+            throw e;
+        }
+    }
+
+    @FXML
+    void adminsGod(ActionEvent event){
+        anchor_adding.setVisible(false);
+        anchor_main.setVisible(false);
+        adminPanel.setVisible(true);
+
+    }
 
 
 }

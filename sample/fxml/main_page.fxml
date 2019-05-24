@@ -47,7 +47,7 @@
             <MenuItem mnemonicParsing="false" onAction="#switchAnchor" text="Add Doctor" />
             <MenuItem mnemonicParsing="false" text="Redo" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Admin Panel" />
+            <MenuItem fx:id="menuAdmin" mnemonicParsing="false" onAction="#adminsGod" text="Admin Panel" />
             <MenuItem mnemonicParsing="false" text="Paste" />
             <MenuItem mnemonicParsing="false" text="Delete" />
             <SeparatorMenuItem mnemonicParsing="false" />
@@ -64,7 +64,7 @@
     </MenuBar>
       <AnchorPane prefHeight="618.0" prefWidth="989.0" styleClass="anchor" stylesheets="@../Source/css/csslog.css">
          <children>
-            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0">
+            <AnchorPane fx:id="anchor_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="989.0" visible="false">
                <children>
                   <TextField fx:id="empIdText" layoutX="193.0" layoutY="41.0" prefHeight="27.0" prefWidth="85.0" promptText="ID" visible="false" />
                   <TextArea fx:id="resultArea" layoutX="321.0" layoutY="523.0" prefHeight="85.0" prefWidth="167.0" wrapText="true" />
@@ -131,7 +131,7 @@
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="288.0">
                                  <children>
                                     <Button layoutX="14.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Show salary" />
-                                    <Button layoutX="14.0" layoutY="112.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="With car" />
+                                    <Button fx:id="procCar" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#showCar" prefHeight="37.0" prefWidth="112.0" text="With car" />
                                     <Button layoutX="142.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Non EU" />
                                     <Button layoutX="142.0" layoutY="112.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Admins" />
                                  </children>
@@ -239,6 +239,97 @@
                         <Image url="@../Source/star-red-512.png" />
                      </image>
                   </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="adminPanel" prefHeight="618.0" prefWidth="1000.0">
+               <children>
+                  <Button fx:id="finishBut1" layoutX="808.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchAdmins" prefHeight="75.0" prefWidth="153.0" text="Finish">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="114.0" layoutY="56.0" text="Name:" />
+                  <Label layoutX="114.0" layoutY="124.0" text="Surname:" />
+                  <Label layoutX="329.0" layoutY="56.0" text="Email:" />
+                  <Label layoutX="329.0" layoutY="124.0" text="Specialization:" />
+                  <ComboBox fx:id="specBox1" editable="true" layoutX="329.0" layoutY="153.0" prefHeight="27.0" prefWidth="167.0" promptText="Input" />
+                  <TextField fx:id="nameBox1" layoutX="114.0" layoutY="83.0" />
+                  <TextField fx:id="emailBox1" layoutX="329.0" layoutY="83.0" />
+                  <TextField fx:id="surnameBox1" layoutX="114.0" layoutY="153.0" />
+                  <Label layoutX="261.0" layoutY="25.0" text="Required:" textFill="#bc4317">
+                     <font>
+                        <Font name="System Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="checkLab1" layoutX="229.0" layoutY="501.0" prefHeight="17.0" prefWidth="289.0" textFill="#65d339">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="nameError1" layoutX="244.0" layoutY="116.0" prefHeight="15.0" prefWidth="36.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="emailError1" layoutX="453.0" layoutY="116.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="surnameError1" layoutX="229.0" layoutY="187.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="specError1" layoutX="457.0" layoutY="186.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phoneError1" layoutX="239.0" layoutY="334.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="socialError1" layoutX="460.0" layoutY="334.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cityError1" layoutX="240.0" layoutY="401.0" prefHeight="15.0" prefWidth="43.0" textFill="#c31b1b">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="157.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../Source/star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="367.0" layoutY="59.0">
+                     <image>
+                        <Image url="@../Source/star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="173.0" layoutY="127.0">
+                     <image>
+                        <Image url="@../Source/star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="14.0" layoutX="418.0" layoutY="126.0">
+                     <image>
+                        <Image url="@../Source/star-red-512.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="715.0" layoutY="88.0" prefHeight="17.0" prefWidth="180.0" text="Admins" />
+                  <TableView fx:id="adminsTable" editable="true" layoutX="168.0" layoutY="194.0" prefHeight="262.0" prefWidth="490.0" tableMenuButtonVisible="true">
+                     <columns>
+                        <TableColumn fx:id="idAdmin" prefWidth="57.0" text="Id" />
+                        <TableColumn fx:id="userAdmin" prefWidth="75.0" text="User" />
+                        <TableColumn fx:id="roolsAdmin" prefWidth="73.0" text="Rools" />
+                        <TableColumn fx:id="activityAdmin" prefWidth="79.0" text="Activity" />
+                     </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </children>

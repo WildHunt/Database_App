@@ -109,4 +109,28 @@ public class DoctorsDAO {
             throw e;
         }
     }
+
+    public  ObservableList<Doctors> showWithCar () throws SQLException, ClassNotFoundException {
+        //Declare a SELECT statement
+        String selectStmt = "SELECT * FROM Doctors where car = true ";
+        Connection conn = DBConnect.connection();
+        preparedStatement = conn.prepareStatement(selectStmt);
+
+
+        //Execute SELECT statement
+        try {
+            ResultSet rsEmps;
+            rsEmps = preparedStatement.executeQuery();
+            ObservableList<Doctors> empList = getDoctorsList(rsEmps);
+            System.out.println(empList.toString());
+
+            //Return employee object
+            return empList;
+        } catch (SQLException e) {
+            System.out.println("SQL select operation has been failed: " + e);
+            //Return exception
+            throw e;
+        }
+    }
+
 }
