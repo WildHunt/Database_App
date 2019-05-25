@@ -1,5 +1,5 @@
 package sample.Controllers;
-
+import com.jfoenix.controls.JFXProgressBar;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -14,9 +14,10 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
+import sample.Admins;
+import sample.AdminsDAO;
 import sample.Doctors;
 import sample.DoctorsDAO;
-
 import java.sql.SQLException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Executor;
@@ -36,6 +37,9 @@ public class Controller {
 
     @FXML
     private AnchorPane lab;
+
+    @FXML
+    private JFXProgressBar progresSalary;
 
     @FXML
     private Label nameError;
@@ -125,10 +129,16 @@ public class Controller {
     private Button updateEmpBtn;
 
     @FXML
+    private Button addAdmins;
+
+    @FXML
     private TextArea resultArea;
 
     @FXML
     private TextField newEmailText;
+
+    @FXML
+    private TextField idText;
 
     @FXML
     private TextField nameText;
@@ -174,19 +184,25 @@ public class Controller {
     public TableView adminsTable;
 
     @FXML
-    private TableColumn<Doctors, Integer> idAdmin;
+    private TableColumn<Admins, Integer> idAdmin;
 
     @FXML
-    private TableColumn<Doctors, String> userAdmin;
+    private TableColumn<Admins, String> userAdmin;
 
     @FXML
-    private TableColumn<Doctors, String> roolsAdmin;
+    private TableColumn<Admins, String> roolsAdmin;
 
     @FXML
-    private TableColumn<Doctors, String> activityAdmin;
+    private TableColumn<Admins, String> activityAdmin;
 
     @FXML
     private ComboBox<String> specBox;
+
+    @FXML
+    private ComboBox<String> specAdmins;
+
+    @FXML
+    private TextField userAdmins;
 
     @FXML
     private TextField nameBox;
@@ -203,6 +219,15 @@ public class Controller {
 
     @FXML
     private Button checkBut;
+
+    @FXML
+    private Button showAdmins;
+
+    @FXML
+    private Button deleteAdmins;
+
+    @FXML
+    private Button editAdmins;
 
     @FXML
     private TextField phoneBox;
@@ -259,6 +284,7 @@ public class Controller {
     private void initialize () {
 
         specBox.getItems().addAll("Dentist", "Surgeon", "Nurse","Mediс");
+        specAdmins.getItems().addAll("Admin", "User", "Mr.Robot");
         /*
         The setCellValueFactory(...) that we set on the table columns are used to determine
         which field inside the Employee objects should be used for the particular column.
@@ -292,8 +318,16 @@ public class Controller {
 //        empEmailColumn.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
 //        empPhoneNumberColumn.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
        // empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().hireDateProperty());
+        /**
+         * Table for Admins
+         */
+        idAdmin.setCellValueFactory(cellData -> cellData.getValue().idAdminsProperty().asObject());
+        userAdmin.setCellValueFactory(cellData -> cellData.getValue().userAdminsProperty());
+        roolsAdmin.setCellValueFactory(cellData ->cellData.getValue().roolsAdminsProperty() );
+        activityAdmin.setCellValueFactory(cellData -> cellData.getValue().activityAdminsProperty());
+
         consolefield.setText("Database is not connected");
-        consolefield.setText("\n"+ consolefield.getText()+ "roma");
+        consolefield.setText("\n"+ consolefield.getText()+ "roma" + "\n");
 
 
 
@@ -321,7 +355,7 @@ public class Controller {
     @FXML
     private void searchEmployees(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         try {
-
+            console("Preparing all employes to view");
             //Get all Employees information
             //ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
             ObservableList<Doctors> dctData = new DoctorsDAO().searchEmployees();
@@ -330,6 +364,7 @@ public class Controller {
             populateEmployees(dctData);
             doctorsTable.setItems(dctData);
         } catch (SQLException e){
+            console("Error occurred while getting employees information from DB.\n" + e);
             System.out.println("Error occurred while getting employees information from DB.\n" + e);
             throw e;
         }
@@ -356,6 +391,9 @@ public class Controller {
 
     @FXML
     void insertEmployee(ActionEvent event) {
+      progresSalary.setVisible(true);
+     console("Successfully added to database");
+
 
     }
 
@@ -485,6 +523,90 @@ public class Controller {
         anchor_adding.setVisible(false);
         anchor_main.setVisible(false);
         adminPanel.setVisible(true);
+
+    }
+
+    @FXML
+    void showAdmins(ActionEvent event) throws SQLException, ClassNotFoundException {
+        try {
+
+            //Get all Employees information
+            //ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
+            ObservableList<Admins> dctData = new AdminsDAO().allAdmins();
+            // ObservableList<Employee> empData = new EmployeeDAO().searchEmployees();
+            //Populate Employees on TableView
+            populateEmployees(dctData);
+            adminsTable.setItems(dctData);
+        } catch (SQLException e){
+            System.out.println("Error occurred while getting Admins information from DB.\n" + e);
+            throw e;
+        }
+
+    }
+
+    @FXML
+    void showAdmins() throws SQLException, ClassNotFoundException {
+        try {
+
+            //Get all Employees information
+            //ObservableList<Employee> empData = EmployeeDAO.searchEmployees();
+            ObservableList<Admins> dctData = new AdminsDAO().allAdmins();
+            // ObservableList<Employee> empData = new EmployeeDAO().searchEmployees();
+            //Populate Employees on TableView
+            populateEmployees(dctData);
+            adminsTable.setItems(dctData);
+        } catch (SQLException e){
+            System.out.println("Error occurred while getting Admins information from DB.\n" + e);
+            throw e;
+        }
+
+    }
+
+    @FXML
+    void deleteAdmins(ActionEvent event) {
+
+    }
+
+    @FXML
+    void editAdmins(ActionEvent event) throws SQLException,ClassNotFoundException {
+        try {
+            console("Editing admins...");
+            String adminID, permission;
+            Integer adminINT;
+            adminID = idText.getText();
+            adminINT = Integer.parseInt(adminID);
+            permission = specAdmins.getValue();
+            AdminsDAO.editAdmins(adminINT,permission);
+            showAdmins();
+        }
+        catch (SQLException e){
+            System.out.println("Error occurred while editing Admin to DB.\n" + e);
+            throw e;
+        }
+
+
+    }
+
+    @FXML
+    void addAdmins(ActionEvent event) throws SQLException,ClassNotFoundException{
+        try {
+            console("Adding admin to database...");
+            String username;
+            String rools;
+            username = userAdmins.getText();
+            rools = specAdmins.getValue();
+            AdminsDAO.insertAdmins(username, rools);
+        }
+        catch (SQLException e){
+            console("Error occurred while inserting Admin to DB.");
+            System.out.println("Error occurred while inserting Admin to DB.\n" + e);
+            throw e;
+        }
+    }
+    void console(String text){
+        //consolefield.setText(consolefield.getText()+ text + "\n");
+        consolefield.appendText(consolefield.getText()+ text + "\n");
+        //consolefield.setScrollTop(Double.MAX_VALUE);
 
     }
 
