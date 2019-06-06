@@ -2,17 +2,12 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.Controllers.DBConnect;
-//import sample.util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DoctorsDAO {
     PreparedStatement preparedStatement=null;
 
-    //Use ResultSet from DB as parameter and set Employee Object's attributes and return employee object.
     private  Doctors getDoctorsFromResultSet(ResultSet rs) throws SQLException
     {
         DBConnect.connection();
@@ -39,35 +34,20 @@ public class DoctorsDAO {
         Connection conn = DBConnect.connection();
         preparedStatement = conn.prepareStatement(selectStmt);
 
-
-        //Execute SELECT statement
         try {
-            //EmployeeDAO.co
-
-            // connectController me = new connectController();
-            //Get ResultSet from dbExecuteQuery method
-            //ResultSet rsEmps = connectController.dbExecuteQuery(selectStmt);
             ResultSet rsEmps;
             rsEmps = preparedStatement.executeQuery();
-            //ResultSet rsEmp = connectController.dbExecuteQuery(selectStmt);
-            //rsEmps = me.dbExecuteQuery(selectStmt);
-            //System.out.println(preparedStatement.toString());
-
-            //Send ResultSet to the getEmployeeList method and get employee object
             ObservableList<Doctors> empList = getDoctorsList(rsEmps);
             System.out.println(empList.toString());
-
-            //Return employee object
             return empList;
+
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
-            //Return exception
             throw e;
         }
     }
 
     private  static ObservableList<Doctors> getDoctorsList(ResultSet rs) throws SQLException, ClassNotFoundException {
-        //Declare a observable List which comprises of Doctors objects
         ObservableList<Doctors> dctList = FXCollections.observableArrayList();
 
         while (rs.next()) {
@@ -88,11 +68,8 @@ public class DoctorsDAO {
     }
 
 
-    //INSERT an employee
-    //*************************************
     public static void insertDoctors (String name, String lastname, String email, String spec, String city,
                                       String social, Boolean car, Boolean resident) throws SQLException, ClassNotFoundException {
-        //Declare a DELETE statement
         String insertStmt =
                 "BEGIN\n" +
                         "INSERT INTO Doctors\n" +
@@ -111,24 +88,58 @@ public class DoctorsDAO {
     }
 
     public  ObservableList<Doctors> showWithCar () throws SQLException, ClassNotFoundException {
-        //Declare a SELECT statement
-        String selectStmt = "SELECT * FROM Doctors where car = true ";
+        String selectStmt = "SELECT * FROM Doctors where car = 1 ";
         Connection conn = DBConnect.connection();
         preparedStatement = conn.prepareStatement(selectStmt);
 
-
-        //Execute SELECT statement
         try {
             ResultSet rsEmps;
             rsEmps = preparedStatement.executeQuery();
             ObservableList<Doctors> empList = getDoctorsList(rsEmps);
             System.out.println(empList.toString());
 
-            //Return employee object
             return empList;
         } catch (SQLException e) {
             System.out.println("SQL select operation has been failed: " + e);
-            //Return exception
+            throw e;
+        }
+    }
+
+    public static void deleteDoctors (Integer idDoctor) throws SQLException, ClassNotFoundException {
+        //Declare a DELETE statement
+        String insertStmt =
+                "BEGIN\n" +
+                        "DELETE FROM Doctors\n" +
+                        "WHERE idAdmins =" + idDoctor+ ";\n"+
+                        "END;";
+
+        try {
+            DBConnect.dbExecuteQuery(insertStmt);
+        } catch (SQLException e) {
+            System.out.print("Error occurred while delete Operation: " + e);
+            throw e;
+        }
+    }
+
+    public ObservableList showSalaryDoc(String param) throws SQLException, ClassNotFoundException {
+        //Declare a DELETE statement
+
+        String selectStmt =
+                "BEGIN\n" +
+                        "exec myproc" + "'"+param+"'"+ "\n" +
+                        "END;";
+        Connection conn = DBConnect.connection();
+        preparedStatement = conn.prepareStatement(selectStmt);
+
+        try {
+            ResultSet rsEmps;
+            rsEmps = preparedStatement.executeQuery();
+            ObservableList<Doctors> empList = getDoctorsList(rsEmps);
+            System.out.println(empList.toString());
+            return empList;
+
+        } catch (SQLException e) {
+            System.out.println("SQL select operation has been failed: " + e);
             throw e;
         }
     }

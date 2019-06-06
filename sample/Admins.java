@@ -8,10 +8,10 @@ public class Admins {
     private StringProperty activityAdmins;
 
     public Admins() {
-        this.idAdmins = idAdmins;
-        this.userAdmins = userAdmins;
-        this.roolsAdmins = roolsAdmins;
-        this.activityAdmins = activityAdmins;
+        this.idAdmins = new SimpleIntegerProperty();
+        this.userAdmins = new SimpleStringProperty();
+        this.roolsAdmins = new SimpleStringProperty();
+        this.activityAdmins = new SimpleStringProperty();
     }
 
     public int getIdAdmins() {

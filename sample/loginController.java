@@ -46,7 +46,7 @@ public class loginController {
         user = username.getText();
         pass = password.getText();
 
-        if (pass.matches("roma")==true){
+        if ((pass.matches("roma")==true) || (pass.matches("github"))){
             try {
                 Stage stage1 = (Stage) gobut.getScene().getWindow();
                 // do what you have to do

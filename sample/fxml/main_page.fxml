@@ -59,7 +59,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" text="Created by rmakeev" />
           </items>
         </Menu>
       </menus>
@@ -108,7 +108,7 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                      <Tab text="EasterEggs">
+                      <Tab text="Employee">
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -134,10 +134,10 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="288.0">
                                  <children>
-                                    <Button layoutX="14.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Show salary" />
+                                    <Button fx:id="showSalary" layoutX="46.0" layoutY="184.0" mnemonicParsing="false" onAction="#showSalary" prefHeight="37.0" prefWidth="177.0" text="Search by surname:" />
                                     <Button fx:id="procCar" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#showCar" prefHeight="37.0" prefWidth="112.0" text="With car" />
-                                    <Button layoutX="142.0" layoutY="46.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Non EU" />
-                                    <Button layoutX="142.0" layoutY="112.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="112.0" text="Admins" />
+                                    <Button fx:id="procAdmin" layoutX="142.0" layoutY="112.0" mnemonicParsing="false" onAction="#procAdmin" prefHeight="37.0" prefWidth="112.0" text="Admins" />
+                                    <TextField fx:id="salarytext" layoutX="51.0" layoutY="242.0" />
                                  </children>
                               </AnchorPane>
                            </content>

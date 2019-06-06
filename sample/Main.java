@@ -15,17 +15,7 @@ import javafx.scene.paint.Color;
 public class Main extends Application {
 
 
-//    @Override
-//    public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("main_page.fxml"));
-//        primaryStage.setTitle("Roma Makeev");
-//        primaryStage.setScene(new Scene(root, 1000, 650));
-//        primaryStage.show();
-//
-//        ////
-//
-//
-//    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("fxml/regform.fxml"));

@@ -18,7 +18,7 @@ public class AdminsDAO {
         Admins adm = null;
         if (rs.next()) {
             adm = new Admins();
-            adm.setIdAdmins(rs.getInt("idAdmin"));
+            adm.setIdAdmins(rs.getInt("idAdmins"));
             adm.setUserAdmins(rs.getString("userAdmins"));
             adm.setRoolsAdmins(rs.getString("roolsAdmins"));
             adm.setActivityAdmins(rs.getString("activityAdmins"));
@@ -60,7 +60,7 @@ public class AdminsDAO {
         while (rs.next()) {
             Admins adm = new Admins();
             //adm = new Admins();
-            adm.setIdAdmins(rs.getInt("idAdmin"));
+            adm.setIdAdmins(rs.getInt("idAdmins"));
             adm.setUserAdmins(rs.getString("userAdmins"));
             adm.setRoolsAdmins(rs.getString("roolsAdmins"));
             adm.setActivityAdmins(rs.getString("activityAdmins"));
@@ -69,7 +69,7 @@ public class AdminsDAO {
         return admList;
     }
 
-    public static void insertAdmins (String username, String rools) throws SQLException, ClassNotFoundException {
+    public static void insertAdmins (String username, String rools, String id) throws SQLException, ClassNotFoundException {
         //Declare a DELETE statement
 
         java.util.Date utilDate = new java.util.Date();
@@ -80,9 +80,9 @@ public class AdminsDAO {
         String insertStmt =
                 "BEGIN\n" +
                         "INSERT INTO Admins\n" +
-                        "(username, rools, activity)\n" +
+                        "(idAdmins,userAdmins, roolsAdmins, activityAdmins)\n" +
                         "VALUES\n" +
-                        "('"+username+"', '"+rools+"','"+sqlDate+"');\n" +
+                        "('"+id+"','"+username+"', '"+rools+"','"+sqlDate+"');\n" +
                         "END;";
 
         try {
@@ -114,9 +114,14 @@ public class AdminsDAO {
         String insertStmt =
                 "BEGIN\n" +
                         "UPDATE Admins\n" +
-                        "SET rools="+ permission +
-                        "WHERE idAdmins =" + idAdmin+ ";\n"+
+                        "SET roolsAdmins="+"'"+permission+"'"+"\n"+
+                      //  "SET roolsAdmins=" +"('"+permission+"');\n" +
+                        "WHERE idAdmins ="+idAdmin+";\n"+
                         "END;";
+//        String insertStmt = "UPDATE Admins SET roolsAdmins ="+permission+"\n"
+//                + "WHERE idAdmins ="+idAdmin+";\n"+
+//                "END;";
+
 
         try {
             DBConnect.dbExecuteQuery(insertStmt);
