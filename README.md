@@ -26,10 +26,10 @@ if (true)
 ![alt text](sample/Source/2019-06-06_16-25-13.png)
 
 ## Employee Panel:
-![alt text](sample/Source/2019-06-06_16-25-59 copy.png)
+![alt text](sample/Source/2019-06-06_16-25-59copy.png)
 
 ## Procedure Panel:
-![alt text](sample/Source/2019-06-06_16-27-44 copy.png)
+![alt text](sample/Source/2019-06-06_16-27-44copy.png)
 
 
 
