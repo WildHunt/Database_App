@@ -3,5 +3,5 @@
 ![alt text](sample/Source/log.png)
 
 ```bash
-Password !=null
+Password: github
 ```
